@@ -129,8 +129,9 @@ function receivedPostback(event) {
   // let them know it was successful
   // sendTextMessage(senderID, "Postback called");
   switch(payload){
-      case'photodiferent':
-      sendTextMessage(senderID, "Yes I receive the difference payload. What's next?")
+      case'GET_STARTED':
+      sendTextMessage(senderID, "Yes I receive the GET STARTED payload. What's next?")
+      sendplay(senderID);
       break;
   }
 }
