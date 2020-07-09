@@ -100,6 +100,10 @@ function receivedMessage(event) {
       case 'Hi':
         sendTextMessage(senderID, "Hellooo there :)");
         break;
+        
+      case 'menu':
+        sendplay(senderID);
+        break;
 
       default:
         sendTextMessage(senderID, messageText);
@@ -123,7 +127,8 @@ function receivedPostback(event) {
 
   // When a postback is called, we'll send a message back to the sender to 
   // let them know it was successful
-  sendTextMessage(senderID, "Postback called");
+  // sendTextMessage(senderID, "Postback called");
+  switch
 }
 
 //////////////////////////
@@ -215,3 +220,37 @@ function callSendAPI(messageData) {
 var server = app.listen(process.env.PORT || 3000, function () {
   console.log("Listening on port %s", server.address().port);
 });
+
+
+function sendplay(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "button",
+          text: " GAMES",
+          buttons:[{
+              type: "postback",
+              title: "Puzzle",
+              payload: "puzzle"
+          },       {
+            type: "postback",
+            title: "Know yourself",
+            payload: "knowyourself"
+          }, {
+            type: "postback",
+            title: "Find the difference",
+            payload: "photodiferent"
+          } 
+          ]
+        }
+      }
+    }
+  };
+
+  callSendAPI(messageData);
+}
