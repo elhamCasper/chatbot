@@ -90,7 +90,7 @@ function receivedMessage(event) {
     // and send back the template example. Otherwise, just echo the text we received.
     switch (messageText) {
       case 'generic':
-        // sendGenericMessage(senderID);
+        
         break;
         
       case 'hi':
@@ -150,53 +150,6 @@ function sendTextMessage(recipientId, messageText) {
 
   callSendAPI(messageData);
 }
-
-// function sendGenericMessage(recipientId) {
-//   var messageData = {
-//     recipient: {
-//       id: recipientId
-//     },
-//     message: {
-//       attachment: {
-//         type: "template",
-//         payload: {
-//           template_type: "generic",
-//           elements: [{
-//             title: "rift",
-//             subtitle: "Next-generation virtual reality",
-//             item_url: "https://www.oculus.com/en-us/rift/",               
-//             image_url: "http://messengerdemo.parseapp.com/img/rift.png",
-//             buttons: [{
-//               type: "web_url",
-//               url: "https://www.oculus.com/en-us/rift/",
-//               title: "Open Web URL"
-//             }, {
-//               type: "postback",
-//               title: "Call Postback",
-//               payload: "Payload for first bubble",
-//             }],
-//           }, {
-//             title: "touch",
-//             subtitle: "Your Hands, Now in VR",
-//             item_url: "https://www.oculus.com/en-us/touch/",               
-//             image_url: "http://messengerdemo.parseapp.com/img/touch.png",
-//             buttons: [{
-//               type: "web_url",
-//               url: "https://www.oculus.com/en-us/touch/",
-//               title: "Open Web URL"
-//             }, {
-//               type: "postback",
-//               title: "Call Postback",
-//               payload: "Payload for second bubble",
-//             }]
-//           }]
-//         }
-//       }
-//     }
-//   };  
-
-//   callSendAPI(messageData);
-// }
 
 function callSendAPI(messageData) {
   request({
@@ -298,7 +251,7 @@ id: recipientId
       Text:"Hello! Welcome " + name+ " "+lname+" to ChatBot :) ",
       buttons:[{
       type:"postback",
-        title:"Start Now",
+        title:"start now",
         payload:"start"
         
       },]
