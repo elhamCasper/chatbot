@@ -75,6 +75,7 @@ function receivedMessage(event) {
   var recipientID = event.recipient.id;
   var timeOfMessage = event.timestamp;
   var message = event.message;
+  var quickReply = message.quick_reply;
 
   console.log("Received message for user %d and page %d at %d with message:", 
     senderID, recipientID, timeOfMessage);
@@ -111,6 +112,9 @@ function receivedMessage(event) {
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
   }
+  if(event.message.quick_reply){
+    sendQuickReply(senderID, quickReply, messageId, messageText);
+  }
 }
 
 function receivedPostback(event) {
@@ -138,7 +142,7 @@ function receivedPostback(event) {
       break;
       
       case'menu1':
-      sendsections1(senderID);
+      sendsections(senderID);
       break;
       
       case'section1':
@@ -339,7 +343,7 @@ id: recipientId
   })
 }
 
-function sendsections1(recipientId){
+function sendsections(recipientId){
   var messageData = {
     recipient:{
       id: recipientId
@@ -392,7 +396,7 @@ function sendquickreply1(recipientId){
         },
                           {
           "content_type": "text",
-          "title": "No 2",
+          "title": "No 3",
           "payload": "quick1"
         },
                           {
@@ -434,8 +438,14 @@ function sendquickreply1(recipientId){
 
 }};
   
-console.log("quick 1 test success")
+console.log("quick 1 test success");
+  callSendAPI(messageData)
   
 //////////////////////////////
   
 }  
+
+function sendQuickReply(senderID, quickReply, messageId, messageText){
+  var quickReplyPayload = quickReply.payload;
+    
+}
