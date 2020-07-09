@@ -267,3 +267,65 @@ id: recipientId
   }
   })
 }
+
+function sendstart (recipientId){
+
+  request ({
+  url:"https://graph.facebook.com/v2.6/" + recipientId ,
+    qs:{
+    access_token:process.env.PAGE_ACCESS_TOKEN,
+      fields:""
+    
+    },
+    method:"GET",
+    
+  
+  },function (error, response, body){
+  if(error){
+  console.log("error getting username")
+  }else{
+  
+  var bodyObj = JSON.parse(body)
+var name = bodyObj.first_name
+  var lname = bodyObj.last_name
+  var pc = bodyObj.profile_pic
+ var locale = bodyObj.locale
+var timezone = bodyObj.timezone
+var gender = bodyObj.gender
+  
+  console.log(JSON.parse(body))
+    
+var messageData = {
+recipient:{
+id: recipientId
+},
+  message:{
+  attachment:{
+  type:"template",
+    payload:{
+    template_type:"button",
+      text:" (L) " +name+ " " +lname+ " (L) ",
+      buttons:[{
+      type:"postback",
+        title:"Menu 1",
+        payload:"menu1"
+        
+      },
+      {
+        type: "postback",
+          title:"Menu 2",
+        payload:"menu2"
+      },
+      {
+        type: "postback",
+          title:"Menu 3",
+        payload:"menu3"
+      }]
+    }
+  }
+  }
+};
+    callSendAPI(messageData);
+  }
+  })
+}
