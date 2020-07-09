@@ -138,7 +138,11 @@ function receivedPostback(event) {
       break;
       
       case'menu1':
-      sendquickreply1(senderID);
+      sendsections1(senderID);
+      break;
+      
+      case'menu1':
+      sendsections1(senderID);
       break;
   }
 }
@@ -272,6 +276,7 @@ id: recipientId
   })
 }
 
+//when press start now
 function sendstart (recipientId){
 
   request ({
@@ -334,7 +339,7 @@ id: recipientId
   })
 }
 
-function sendmenu(recipientId){
+function sendsections1(recipientId){
   var messageData = {
     recipient:{
       id: recipientId
@@ -344,22 +349,22 @@ function sendmenu(recipientId){
     type:"template",
     payload:{
       template_type:"button",
-      text:" 1 ",
+      text:" Menu 1 ",
       buttons:[{
         type:"postback",
-        title:"Menu 1",
-        payload:"menu1"
+        title:"Section 1",
+        payload:"section1"
         
       },
       {
         type: "postback",
-          title:"Menu 2",
-        payload:"menu2"
+          title:"Section 2",
+        payload:"section2"
       },
       {
         type: "postback",
-          title:"Menu 3",
-        payload:"menu3"
+          title:"Section 3",
+        payload:"section3"
       }]
     }
   }
@@ -367,5 +372,3 @@ function sendmenu(recipientId){
 };
     callSendAPI(messageData);
   }
-  })
-}
