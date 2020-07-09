@@ -248,10 +248,10 @@ id: recipientId
   type:"template",
     payload:{
     template_type:"button",
-      Text:"Hello! Welcome " + name+ " "+lname+" to ChatBot :) ",
+      text:"Hello! Welcome to ChatBot :) " +name+ " " +lname+ "",
       buttons:[{
       type:"postback",
-        title:"start now",
+        title:"Start Now",
         payload:"start"
         
       },]
