@@ -447,5 +447,24 @@ console.log("quick 1 test success");
 
 function sendQuickReply(senderID, quickReply, messageId, messageText){
   var quickReplyPayload = quickReply.payload;
-    
+    console.log("Quick reply for message %s with payload %s", messageId, quickReplyPayload);
+  if(quickReplyPayload){
+    //puzzle
+    switch(quickReplyPayload){
+           case 'puzzle':
+           
+           //console.log("Quick reply for message %s with payload %s", messageId, quickReplyPayload, messageText);
+           if(messageText){
+        switch(messageText){
+            case 'quick reply1'
+            sendonepuzzle(senderID);
+            break;
+            
+            case 'quick reply1'
+            sendonepuzzle(senderID);
+            break;
+        }
+    }
+           })
+  }
 }
