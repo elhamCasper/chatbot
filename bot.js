@@ -456,15 +456,30 @@ function sendQuickReply(senderID, quickReply, messageId, messageText){
            //console.log("Quick reply for message %s with payload %s", messageId, quickReplyPayload, messageText);
            if(messageText){
         switch(messageText){
-            case 'quick reply1'
+          case 'quick reply1':
             sendonepuzzle(senderID);
             break;
             
-            case 'quick reply1'
-            sendonepuzzle(senderID);
+          case 'quick reply2':
+            sendtwopuzzle(senderID);
+            break;
+            
+          case 'quick reply3':
+            sendthreepuzzle(senderID);
+            break;
+            
+          case 'quick reply4':
+            sendfourpuzzle(senderID);
+            break;
+            
+          case 'quick reply5':
+            sendfivepuzzle(senderID);
             break;
         }
     }
-           })
+        break;
+      default:
+        sendTexMessage(senderID, "Payload not defined");
+           }
   }
 }
