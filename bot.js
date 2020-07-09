@@ -133,8 +133,12 @@ function receivedPostback(event) {
       sendGetStarted(senderID);
       break;
       
-      case'GET_STARTED':
+      case'start':
       sendstart(senderID);
+      break;
+      
+      case'menu1':
+      sendquickreply1(senderID);
       break;
   }
 }
@@ -304,9 +308,45 @@ id: recipientId
   type:"template",
     payload:{
     template_type:"button",
-      text:" (L) " +name+ " " +lname+ " (L) ",
+      text:" ;) " +name+ " " +lname+ " ;) ",
       buttons:[{
       type:"postback",
+        title:"Menu 1",
+        payload:"menu1"
+        
+      },
+      {
+        type: "postback",
+          title:"Menu 2",
+        payload:"menu2"
+      },
+      {
+        type: "postback",
+          title:"Menu 3",
+        payload:"menu3"
+      }]
+    }
+  }
+  }
+};
+    callSendAPI(messageData);
+  }
+  })
+}
+
+function sendmenu(recipientId){
+  var messageData = {
+    recipient:{
+      id: recipientId
+    },
+    message:{
+    attachment:{
+    type:"template",
+    payload:{
+      template_type:"button",
+      text:" 1 ",
+      buttons:[{
+        type:"postback",
         title:"Menu 1",
         payload:"menu1"
         
