@@ -90,7 +90,7 @@ function receivedMessage(event) {
     // and send back the template example. Otherwise, just echo the text we received.
     switch (messageText) {
       case 'generic':
-        sendGenericMessage(senderID);
+        // sendGenericMessage(senderID);
         break;
         
       case 'hi':
@@ -130,8 +130,7 @@ function receivedPostback(event) {
   // sendTextMessage(senderID, "Postback called");
   switch(payload){
       case'GET_STARTED':
-      sendTextMessage(senderID, "Yes I receive the GET STARTED payload. What's next?")
-      sendplay(senderID);
+      sendGetStarted(senderID);
       break;
   }
 }
@@ -260,8 +259,54 @@ function sendplay(recipientId) {
   callSendAPI(messageData);
 }
 
-function sendGetStarted(recipientId){
-  request({
-    url:"https://graph.facebook.v2.6"
+function sendGetStarted (recipientId){
+
+  request ({
+  url:"https://graph.facebook.com/v2.6/" + recipientId ,
+    qs:{
+    access_token:process.env.PAGE_ACCESS_TOKEN,
+      fields:""
+    
+    },
+    method:"GET",
+    
+  
+  },function (error, response, body){
+  if(error){
+  console.log("error getting username")
+  }else{
+  
+  var bodyObj = JSON.parse(body)
+var name = bodyObj.first_name
+  var lname = bodyObj.last_name
+  var pc = bodyObj.profile_pic
+ var locale = bodyObj.locale
+var timezone = bodyObj.timezone
+var gender = bodyObj.gender
+  
+  console.log(JSON.parse(body))
+    
+var messageData = {
+recipient:{
+id: recipientId
+},
+  message:{
+  attachment:{
+  type:"template",
+    payload:{
+    template_type:"button",
+      Text:"Hello! Welcome " + name+ " "+lname+" to ChatBot :) ",
+      buttons:[{
+      type:"postback",
+        title:"Start Now",
+        payload:"start"
+        
+      },]
+    }
+  }
+  }
+};
+    callSendAPI(messageData);
+  }
   })
 }
