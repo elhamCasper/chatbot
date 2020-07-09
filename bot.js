@@ -132,6 +132,10 @@ function receivedPostback(event) {
       case'GET_STARTED':
       sendGetStarted(senderID);
       break;
+      
+      case'GET_STARTED':
+      sendstart(senderID);
+      break;
   }
 }
 
@@ -248,7 +252,7 @@ id: recipientId
   type:"template",
     payload:{
     template_type:"button",
-      text:"Hello! Welcome to ChatBot :) " +name+ " " +lname+ "",
+      text:"Hello! Welcome to ChatBot " +name+ " " +lname+ " :) ",
       buttons:[{
       type:"postback",
         title:"Start Now",
