@@ -141,8 +141,8 @@ function receivedPostback(event) {
       sendsections1(senderID);
       break;
       
-      case'menu1':
-      sendsections1(senderID);
+      case'section1':
+      sendquickreply1(senderID);
       break;
   }
 }
@@ -372,3 +372,70 @@ function sendsections1(recipientId){
 };
     callSendAPI(messageData);
   }
+
+function sendquickreply1(recipientId){
+  var messageData = {
+    recipient:{
+      id: recipientId
+    },
+    message:{
+      "text": "Message for the quick reply payload",
+        "quick_replies": [{
+          "content_type": "text",
+          "title": "No 1",
+          "payload": "quick1"
+        },
+        {
+          "content_type": "text",
+          "title": "No 2",
+          "payload": "quick1"
+        },
+                          {
+          "content_type": "text",
+          "title": "No 2",
+          "payload": "quick1"
+        },
+                          {
+          "content_type": "text",
+          "title": "No 4",
+          "payload": "quick1"
+        },
+        {
+          "content_type": "text",
+          "title": "No 5",
+          "payload": "quick1"
+        },
+        {
+          "content_type": "text",
+          "title": "No 6",
+          "payload": "quick1"
+        },
+        {
+          "content_type": "text",
+          "title": "No 7",
+          "payload": "quick1"
+        }, 
+        {
+          "content_type": "text",
+          "title": "No 8",
+          "payload": "quick1"
+        },
+        {
+          "content_type": "text",
+          "title": "No 9",
+          "payload": "quick1"
+        },
+        {
+          "content_type": "text",
+          "title": "No 10",
+          "payload": "quick1"
+        }
+      ]
+
+}};
+  
+console.log("quick 1 test success")
+  
+//////////////////////////////
+  
+}  
