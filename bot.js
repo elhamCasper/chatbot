@@ -128,7 +128,11 @@ function receivedPostback(event) {
   // When a postback is called, we'll send a message back to the sender to 
   // let them know it was successful
   // sendTextMessage(senderID, "Postback called");
-  switch
+  switch(payload){
+      case'photodiferent':
+      sendTextMessage(senderID, "Yes I receive the difference payload. What's next?")
+      break;
+  }
 }
 
 //////////////////////////
