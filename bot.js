@@ -462,7 +462,6 @@ function sendQuickReply(senderID, quickReply, messageId, messageText){
           case 'No 1':
             //sendTextMessage(senderID, "Yes. I receive the quick reply 1. Thanks :)");
             sendphoto(senderID);
-            break
             break;
             
           case 'No 2':
@@ -479,7 +478,7 @@ function sendQuickReply(senderID, quickReply, messageId, messageText){
 
 function sendphoto(recipientId){
 const get_random_photo = ((ar) => ( ar[ Math.floor( Math.random() * ar.length ) ] ))
-var photo1 = "https://www.7srey.com/wp-content/uploads/2017/04/%D8%A3%D8%AC%D9%85%D9%84-%D8%B5%D9%88%D8%B1-44.jpg";
+var photo1 = "https://images.pexels.com/photos/982865/pexels-photo-982865.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260";
 
 const photo = [photo1]
 
