@@ -472,6 +472,11 @@ function sendQuickReply(senderID, quickReply, messageId, messageText){
             //sendTextMessage(senderID, "Yes. I receive the quick reply 2. Thanks :)");
             sendaudio(senderID);
             break;
+            
+            case 'No 4':
+            //sendTextMessage(senderID, "Yes. I receive the quick reply 2. Thanks :)");
+            sendVideo(senderID);
+            break;
         }
     }
         break;
@@ -505,7 +510,7 @@ const photo = [photo1]
 }
 callSendAPI(messageData);}
 
-//when press quick reply 3 payload
+//when press quick reply 3 payload reply audio
 function sendaudio(recipientId){
 const get_random_song = ((ar) => ( ar[ Math.floor( Math.random() * ar.length ) ] ))
 var song1 = "http://docs.google.com/uc?export=open&id=0B80xfrsPl23cZ044YW1QMWI1QW8"; 
@@ -521,6 +526,30 @@ const song = [song1]
             type: "audio",
             payload: {
                 url: get_random_song( song )
+            }
+        }
+    }
+}
+}
+callSendAPI(messageData);}
+
+//when press quick reply 4 payload reply video
+function sendVideo(recipientId){
+const get_random_Video = ((ar) => ( ar[ Math.floor( Math.random() * ar.length ) ] ))
+var Video1 = "https://youtu.be/5Dbvd4E-334";
+
+const Video = [Video1]
+
+{
+ var messageData = {   
+   recipient: {
+        id: recipientId
+    },
+    message: {
+        attachment: {
+            type: "video",
+            payload: {
+                url: get_random_Video( Video )
             }
         }
     }
