@@ -598,17 +598,11 @@ function defaultanswer(recipientId, messageId,messageText,senderID) {
         }
 if ( len === 1 && i === 0 ) {//console.log(messageText,"not found");
         sendTextMessage(recipientId, "test");
-        
-        
         }
         i++
        
         
       } 
-      
-      
-  
-   
               } else {
 console.log(err);
     }
