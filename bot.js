@@ -109,7 +109,7 @@ function receivedMessage(event) {
       default:
         //sendTextMessage(senderID, messageText);
         
-      defaultanswer(senderID);
+      defaultanswer(senderID, messageId, messageText);
         break;
     }
   } else if (messageAttachments) {
