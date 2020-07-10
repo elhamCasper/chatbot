@@ -607,4 +607,4 @@ if ( len === 4 && i === 3 ) {//console.log(messageText,"not found");
 console.log(err);
     }
   });
-}
+// }
