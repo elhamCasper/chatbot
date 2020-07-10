@@ -343,6 +343,7 @@ id: recipientId
   })
 }
 
+//when press menu button
 function sendsections(recipientId){
   var messageData = {
     recipient:{
@@ -377,6 +378,7 @@ function sendsections(recipientId){
     callSendAPI(messageData);
   }
 
+//when press section button
 function sendquickreply1(recipientId){
   var messageData = {
     recipient:{
@@ -445,6 +447,7 @@ console.log("quick 1 test success");
   
 }  
 
+//when press quick reply payload
 function sendQuickReply(senderID, quickReply, messageId, messageText){
   var quickReplyPayload = quickReply.payload;
     console.log("Quick reply for message %s with payload %s", messageId, quickReplyPayload);
@@ -456,6 +459,10 @@ function sendQuickReply(senderID, quickReply, messageId, messageText){
         //console.log("Quick reply for message %s with payload %s", messageId, quickReplyPayload, messageText);
         if(messageText){
         switch(messageText){
+          case 'No 1':
+            sendTextMessage(senderID, "Yes. I receive the quick reply 1. Thanks :)");
+            break;
+            
           case 'No 2':
             sendTextMessage(senderID, "Yes. I receive the quick reply 2. Thanks :)");
             break;
@@ -467,3 +474,26 @@ function sendQuickReply(senderID, quickReply, messageId, messageText){
            }
   }
 }
+
+function sendphoto(recipientId){
+const get_random_photo = ((ar) => ( ar[ Math.floor( Math.random() * ar.length ) ] ))
+var photo1 = "https://www.7srey.com/wp-content/uploads/2017/04/%D8%A3%D8%AC%D9%85%D9%84-%D8%B5%D9%88%D8%B1-44.jpg";
+
+const photo = [photo1]
+
+{
+ var messageData = {   
+   recipient: {
+        id: recipientId
+    },
+    message: {
+        attachment: {
+            type: "image",
+            payload: {
+                url: get_random_photo( photo )
+            }
+        }
+    }
+}
+}
+callSendAPI(messageData);}
