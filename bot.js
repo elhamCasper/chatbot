@@ -460,7 +460,9 @@ function sendQuickReply(senderID, quickReply, messageId, messageText){
         if(messageText){
         switch(messageText){
           case 'No 1':
-            sendTextMessage(senderID, "Yes. I receive the quick reply 1. Thanks :)");
+            //sendTextMessage(senderID, "Yes. I receive the quick reply 1. Thanks :)");
+            sendphoto(senderID);
+            break
             break;
             
           case 'No 2':
