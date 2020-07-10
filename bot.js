@@ -108,6 +108,9 @@ function receivedMessage(event) {
 
       default:
         //sendTextMessage(senderID, messageText);
+        
+      defaultanswer(senderID);
+        break;
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
@@ -557,3 +560,57 @@ const Video = [Video1]
 }
 callSendAPI(messageData);}
 
+function defaultanswer(recipientId, messageId,messageText,senderID) { 
+  
+// Get Data From a Google Sheet
+  var google_sheet_json = "https://spreadsheets.google.com/feeds/list/" + process.env.GOOGLE_SHEET_ID +"/1/public/values?alt=json";
+  request.get(google_sheet_json, function (err, res, body) {
+    if (!err) {
+      var bot_script_obj = JSON.parse(body);
+      var all_bot_scripts = bot_script_obj.feed.entry;
+   // var len = all_bot_scripts.length;
+       var len = all_bot_scripts.length;
+     // console.log(len);
+       //  var len = 6
+      var all_keywords = [];
+      var i = 0
+      
+      for (; i < len; ) {
+   //console.log(messageText.includes(bot_script_obj.feed.entry[i].gsx$incoming.$t));
+     // console.log(bot_script_obj.feed.entry[i].gsx$incoming.$t,messageText)
+      console.log(i);
+   // console.log(messageText)
+       
+        if (messageText === (bot_script_obj.feed.entry[i].gsx$incoming.$t)){
+          console.log(bot_script_obj.feed.entry[i].gsx$incoming.$t,messageText)
+        var outtext = bot_script_obj.feed.entry[i].gsx$outgoing.$t;
+        var messageData = {
+            recipient: {
+              id: recipientId
+            },
+            message: {
+              text: outtext
+            }
+          };
+        callSendAPI(messageData);
+        break;  
+          
+        }
+if ( len === 1 && i === 0 ) {//console.log(messageText,"not found");
+        sendTextMessage(recipientId, "test");
+        
+        
+        }
+        i++
+       
+        
+      } 
+      
+      
+  
+   
+              } else {
+console.log(err);
+    }
+  });
+}
