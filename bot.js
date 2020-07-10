@@ -447,7 +447,7 @@ console.log("quick 1 test success");
   
 }  
 
-//when press quick reply payload
+//when press quick reply 2 payload
 function sendQuickReply(senderID, quickReply, messageId, messageText){
   var quickReplyPayload = quickReply.payload;
     console.log("Quick reply for message %s with payload %s", messageId, quickReplyPayload);
@@ -467,6 +467,11 @@ function sendQuickReply(senderID, quickReply, messageId, messageText){
           case 'No 2':
             sendTextMessage(senderID, "Yes. I receive the quick reply 2. Thanks :)");
             break;
+            
+          case 'No 3':
+            //sendTextMessage(senderID, "Yes. I receive the quick reply 2. Thanks :)");
+            sendaudio(senderID);
+            break;
         }
     }
         break;
@@ -476,6 +481,7 @@ function sendQuickReply(senderID, quickReply, messageId, messageText){
   }
 }
 
+//when press quick reply 1 payload
 function sendphoto(recipientId){
 const get_random_photo = ((ar) => ( ar[ Math.floor( Math.random() * ar.length ) ] ))
 var photo1 = "https://images.pexels.com/photos/982865/pexels-photo-982865.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260";
@@ -498,3 +504,27 @@ const photo = [photo1]
 }
 }
 callSendAPI(messageData);}
+
+//when press quick reply 3 payload
+function sendaudio(recipientId){
+const get_random_song = ((ar) => ( ar[ Math.floor( Math.random() * ar.length ) ] ))
+var song1 = "http://docs.google.com/uc?export=open&id=0B80xfrsPl23cZ044YW1QMWI1QW8"; 
+const song = [song1]
+
+{
+ var messageData = {   
+   recipient: {
+        id: recipientId
+    },
+    message: {
+        attachment: {
+            type: "audio",
+            payload: {
+                url: get_random_song( song )
+            }
+        }
+    }
+}
+}
+callSendAPI(messageData);}
+
