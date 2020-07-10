@@ -596,7 +596,7 @@ function defaultanswer(recipientId, messageId,messageText,senderID) {
         break;  
           
         }
-if ( len === 1 && i === 0 ) {//console.log(messageText,"not found");
+if ( len === 4 && i === 3 ) {//console.log(messageText,"not found");
         sendTextMessage(recipientId, "test");
         }
         i++
