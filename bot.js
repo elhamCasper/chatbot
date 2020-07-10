@@ -107,7 +107,7 @@ function receivedMessage(event) {
         break;
 
       default:
-        sendTextMessage(senderID, messageText);
+        //sendTextMessage(senderID, messageText);
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
@@ -451,13 +451,13 @@ function sendQuickReply(senderID, quickReply, messageId, messageText){
   if(quickReplyPayload){
     //puzzle
     switch(quickReplyPayload){
-           case 'puzzle':
+           case 'quick1':
            
-           //console.log("Quick reply for message %s with payload %s", messageId, quickReplyPayload, messageText);
-           if(messageText){
+        //console.log("Quick reply for message %s with payload %s", messageId, quickReplyPayload, messageText);
+        if(messageText){
         switch(messageText){
-          case 'quick reply1':
-            sendonepuzzle(senderID);
+          case '2':
+            sendTextMessage(senderID, "Yes. I receive the quick reply 2. Thanks :)");
             break;
             
           case 'quick reply2':
