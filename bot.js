@@ -536,7 +536,7 @@ callSendAPI(messageData);}
 //when press quick reply 4 payload reply video
 function sendVideo(recipientId){
 const get_random_Video = ((ar) => ( ar[ Math.floor( Math.random() * ar.length ) ] ))
-var Video1 = "https://youtu.be/5Dbvd4E-334";
+var Video1 = "https://dl.dropbox.com/s/vt1rjfouyrtggrz/VID-20171022-WA0025.mp4?dl=0";
 
 const Video = [Video1]
 
